@@ -202,10 +202,10 @@ def build_html(segs, caps, has_music, music_rel, sfx_cues, title, kicker,
         a('  <audio id="music" src="%s" data-start="0" data-duration="%.3f" '
           'data-track-index="8" data-volume="0.16" data-fade-in="0.8" '
           'data-fade-out="2.0"></audio>' % (music_rel, duration))
-    for i, (t, f) in enumerate(sfx_cues):
+    for i, (t, f, track) in enumerate(sfx_cues):
         a('  <audio id="sfx%d" src="assets/sfx/%s" data-start="%.3f" '
-          'data-duration="%.3f" data-track-index="9" data-volume="%.2f"></audio>'
-          % (i, f, t, 2.0, 0.45))
+          'data-duration="%.3f" data-track-index="%d" data-volume="%.2f"></audio>'
+          % (i, f, t, 2.0, track, 0.45))
 
     a('</div>')
 
@@ -275,8 +275,11 @@ def build_html(segs, caps, has_music, music_rel, sfx_cues, title, kicker,
     for i, s in enumerate(segs):
         if i == 0:
             continue
+        # immediateRender:false para que los seeks previos al primer tween
+        # conserven el estado de reposo (el flash arranca oculto por CSS).
         a('tl.fromTo("#flash", { opacity: 0.85 }, '
-          '{ opacity: 0, duration: 0.22, ease: "power2.out" }, %.3f);' % (s["t"] - 0.01))
+          '{ opacity: 0, duration: 0.22, ease: "power2.out", '
+          'immediateRender: false }, %.3f);' % (s["t"] - 0.01))
 
     a('')
     a('window.__timelines["main"] = tl;')
@@ -306,7 +309,10 @@ def main():
         segs.append(seg)
         t += (s["out"] - s["in"])
     total = round(t, 3)
-    duration = float(cfg.get("duration") or total)
+    # La raiz debe cubrir el grupo de caption mas tardio (incluye su colchon
+    # de 0.30s) para que nada quede cortado.
+    cfg_dur = float(cfg.get("duration") or total)
+    duration = round(max(cfg_dur, total + 0.45), 3)
     print("duracion total: %.2fs (root %.2fs) en %d segmentos"
           % (total, duration, len(segs)))
     if abs(total - 60.0) > 1.2:
@@ -328,14 +334,15 @@ def main():
         if s.get("chip"):
             chips.append({"text": s["chip"], "start": round(s["t"] + 0.35, 3)})
 
-    # sfx: whoosh en cada frontera + pop en cada chip
+    # sfx: whoosh en cada frontera + pop en cada chip. Van en carriles
+    # distintos para que no se pisen al solaparse.
     sfx = []
     for i, s in enumerate(segs):
         if i == 0:
             continue
-        sfx.append((round(s["t"] - 0.05, 3), "whoosh-short.mp3"))
+        sfx.append((round(s["t"] - 0.05, 3), "whoosh-short.mp3", 9))
     for c in chips:
-        sfx.append((round(c["start"] + 0.05, 3), "pop.mp3"))
+        sfx.append((round(c["start"] + 0.05, 3), "pop.mp3", 10))
 
     music = os.path.join(ASSETS, "bgm", "track.wav")
     has_music = os.path.exists(music)
