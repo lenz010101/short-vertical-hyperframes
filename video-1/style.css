@@ -1,0 +1,231 @@
+/* ==========================================================================
+   Short vertical 1080x1920 — sistema visual
+   ========================================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #07080B;
+  color: #fff;
+  overflow: hidden;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #07080B;
+}
+
+.clip { position: absolute; inset: 0; overflow: hidden; }
+
+/* ---------- banda de video 4:3 ---------- */
+#band {
+  position: absolute;
+  left: 0;
+  top: 552px;
+  width: 1080px;
+  height: 810px;
+  overflow: hidden;
+  background: #000;
+}
+
+#band-clip { position: absolute; inset: 0; overflow: hidden; }
+
+.seg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* scrim inferior para que los captions se lean sobre cualquier cuadro */
+#scrim {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 330px;
+  background: linear-gradient(
+    to top,
+    rgba(4, 5, 8, 0.94) 0%,
+    rgba(4, 5, 8, 0.72) 38%,
+    rgba(4, 5, 8, 0.22) 72%,
+    rgba(4, 5, 8, 0) 100%
+  );
+  pointer-events: none;
+}
+
+/* destello de corte */
+#flash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- chips numerados ---------- */
+.chip-box { position: absolute; inset: 0; pointer-events: none; }
+
+.chip {
+  position: absolute;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 22px 11px 12px;
+  border-radius: 999px;
+  background: rgba(6, 7, 10, 0.64);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  white-space: nowrap;
+}
+
+.chip-n {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #FFD84D;
+  color: #07080B;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.chip-t { font-size: 32px; font-weight: 700; letter-spacing: -0.01em; }
+
+/* ---------- cabecera ---------- */
+#head {
+  position: absolute;
+  left: 0; right: 0; top: 148px;
+  padding: 0 60px;
+  text-align: center;
+}
+
+#kicker {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+#kicker-in { display: inline-block; }
+
+#t1 {
+  margin-top: 20px;
+  font-size: 104px;
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: #fff;
+}
+
+#rule {
+  width: 220px;
+  height: 10px;
+  margin: 26px auto 0;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.13);
+  overflow: hidden;
+}
+
+#rule i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: #FFD84D;
+  transform-origin: left center;
+}
+
+/* ---------- captions karaoke ---------- */
+#caps {
+  position: absolute;
+  left: 0; right: 0;
+  top: 1108px;
+  height: 232px;
+  pointer-events: none;
+}
+
+.cap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  column-gap: 17px;
+  row-gap: 4px;
+  padding: 0 58px;
+  text-align: center;
+}
+
+.w {
+  display: inline-block;
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.16;
+  letter-spacing: -0.015em;
+  color: rgba(255, 255, 255, 0.74);
+  text-shadow: 0 4px 26px rgba(0, 0, 0, 0.9);
+}
+
+.w.act { color: #FFD84D; }
+
+/* ---------- HUD ---------- */
+#hud {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 132px;
+  padding: 0 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+#bar {
+  height: 8px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+}
+
+#bar-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: #FFD84D;
+  transform-origin: left center;
+}
+
+#foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#handle {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#cta {
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: #07080B;
+  background: #FFD84D;
+  padding: 11px 24px;
+  border-radius: 99px;
+}

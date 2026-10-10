@@ -1,0 +1,10 @@
+{
+  "lines": [],
+  "bgm": {
+    "mode": "generate",
+    "query": "confident modern business underscore",
+    "prompt": "Confident modern business underscore for a short vertical video. Clean muted plucks, warm round sub bass, tight understated percussion, soft rising pads. Steady 108 BPM, instrumental only, no vocals, no dramatic drops, generous space in the midrange so a speaking voice sits clearly on top. Polished, optimistic, restrained.",
+    "archetype": "feature-cascade",
+    "arc": "trust/reassurance"
+  }
+}

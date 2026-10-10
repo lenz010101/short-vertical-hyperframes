@@ -1,0 +1,10 @@
+{
+  "duration": 16.0,
+  "kicker": "PRUEBA TÉCNICA",
+  "title": "Prueba de composición",
+  "handle": "@canal",
+  "segments": [
+    { "in": 300.0, "out": 308.0, "chip": "Primer punto de prueba" },
+    { "in": 340.0, "out": 348.0, "chip": "Segundo punto de prueba" }
+  ]
+}

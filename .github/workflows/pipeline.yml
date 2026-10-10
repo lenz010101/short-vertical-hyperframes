@@ -1,0 +1,113 @@
+name: pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "transcribe = solo ASR | build = composicion + render"
+        default: "transcribe"
+        type: choice
+        options: ["transcribe", "build"]
+      asr_model:
+        description: "Modelo faster-whisper (tiny/base/small/medium/large-v3)"
+        default: "small"
+        type: string
+      quality:
+        description: "Calidad de render"
+        default: "delivery"
+        type: choice
+        options: ["draft", "standard", "delivery"]
+
+jobs:
+  work:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: FFmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          ffmpeg -version | head -n 1
+
+      # ---------- ASR en la nube ----------
+      - name: Dependencias ASR
+        if: ${{ github.event.inputs.mode == 'transcribe' }}
+        run: pip install --quiet faster-whisper
+
+      - name: Transcribir
+        if: ${{ github.event.inputs.mode == 'transcribe' }}
+        env:
+          ASR_MODEL: ${{ github.event.inputs.asr_model }}
+          ASR_LANG: es
+        run: python tools/transcribe_cloud.py
+
+      - name: Subir transcript
+        if: ${{ github.event.inputs.mode == 'transcribe' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: transcript
+          path: |
+            video-1/assets/transcript_full.json
+            video-1/assets/transcript_full.txt
+          if-no-files-found: error
+          retention-days: 30
+
+      # ---------- Composicion + render ----------
+      - name: Dependencias de render
+        if: ${{ github.event.inputs.mode == 'build' }}
+        working-directory: video-1
+        run: npm install --no-audit --no-fund
+
+      - name: Musica y composicion
+        if: ${{ github.event.inputs.mode == 'build' }}
+        run: |
+          pip install --quiet numpy soundfile
+          python tools/make_music_np.py
+          python tools/build_comp.py
+
+      - name: Lint
+        if: ${{ github.event.inputs.mode == 'build' }}
+        working-directory: video-1
+        run: npx --yes hyperframes@0.8.145 lint
+
+      - name: Render
+        if: ${{ github.event.inputs.mode == 'build' }}
+        working-directory: video-1
+        env:
+          HYPERFRAMES_TELEMETRY: "0"
+        run: |
+          mkdir -p renders
+          npx --yes hyperframes@0.8.145 render \
+            --quality "${{ github.event.inputs.quality }}" \
+            --fps 30 --workers 8 \
+            --output renders/video-final.mp4
+          ls -la renders
+
+      - name: Subir video
+        if: ${{ github.event.inputs.mode == 'build' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: video-final
+          path: video-1/renders/video-final.mp4
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Subir snapshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: snapshots
+          path: video-1/snapshots/**
+          if-no-files-found: ignore
+          retention-days: 14

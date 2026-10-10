@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Prueba de composición</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+/* ==========================================================================
+   Short vertical 1080x1920 — sistema visual
+   ========================================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #07080B;
+  color: #fff;
+  overflow: hidden;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #07080B;
+}
+
+.clip { position: absolute; inset: 0; overflow: hidden; }
+
+/* ---------- banda de video 4:3 ---------- */
+#band {
+  position: absolute;
+  left: 0;
+  top: 552px;
+  width: 1080px;
+  height: 810px;
+  overflow: hidden;
+  background: #000;
+}
+
+#band-clip { position: absolute; inset: 0; overflow: hidden; }
+
+.seg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* scrim inferior para que los captions se lean sobre cualquier cuadro */
+#scrim {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 330px;
+  background: linear-gradient(
+    to top,
+    rgba(4, 5, 8, 0.94) 0%,
+    rgba(4, 5, 8, 0.72) 38%,
+    rgba(4, 5, 8, 0.22) 72%,
+    rgba(4, 5, 8, 0) 100%
+  );
+  pointer-events: none;
+}
+
+/* destello de corte */
+#flash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- chips numerados ---------- */
+.chip-box { position: absolute; inset: 0; pointer-events: none; }
+
+.chip {
+  position: absolute;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 22px 11px 12px;
+  border-radius: 999px;
+  background: rgba(6, 7, 10, 0.64);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  white-space: nowrap;
+}
+
+.chip-n {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #FFD84D;
+  color: #07080B;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.chip-t { font-size: 32px; font-weight: 700; letter-spacing: -0.01em; }
+
+/* ---------- cabecera ---------- */
+#head {
+  position: absolute;
+  left: 0; right: 0; top: 148px;
+  padding: 0 60px;
+  text-align: center;
+}
+
+#kicker {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+#kicker-in { display: inline-block; }
+
+#t1 {
+  margin-top: 20px;
+  font-size: 104px;
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: #fff;
+}
+
+#rule {
+  width: 220px;
+  height: 10px;
+  margin: 26px auto 0;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.13);
+  overflow: hidden;
+}
+
+#rule i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: #FFD84D;
+  transform-origin: left center;
+}
+
+/* ---------- captions karaoke ---------- */
+#caps {
+  position: absolute;
+  left: 0; right: 0;
+  top: 1108px;
+  height: 232px;
+  pointer-events: none;
+}
+
+.cap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  column-gap: 17px;
+  row-gap: 4px;
+  padding: 0 58px;
+  text-align: center;
+}
+
+.w {
+  display: inline-block;
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.16;
+  letter-spacing: -0.015em;
+  color: rgba(255, 255, 255, 0.74);
+  text-shadow: 0 4px 26px rgba(0, 0, 0, 0.9);
+}
+
+.w.act { color: #FFD84D; }
+
+/* ---------- HUD ---------- */
+#hud {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 132px;
+  padding: 0 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+#bar {
+  height: 8px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+}
+
+#bar-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: #FFD84D;
+  transform-origin: left center;
+}
+
+#foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#handle {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#cta {
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: #07080B;
+  background: #FFD84D;
+  padding: 11px 24px;
+  border-radius: 99px;
+}
+
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="16.000">
+  <div id="band">
+    <div id="band-clip">
+      <video id="v0" class="clip seg" src="assets/seg_00.mp4" playsinline preload="auto" data-has-audio="true" data-start="0.000" data-duration="8.000" data-track-index="0" data-volume="1"></video>
+      <video id="v1" class="clip seg" src="assets/seg_01.mp4" playsinline preload="auto" data-has-audio="true" data-start="8.000" data-duration="8.000" data-track-index="0" data-volume="1"></video>
+    </div>
+    <div id="scrim"></div>
+    <div id="chips">
+      <div class="chip-box clip" data-start="0.350" data-duration="15.650" data-track-index="3">
+        <div class="chip" id="chip0" style="top:48px">
+          <span class="chip-n">1</span><span class="chip-t">Primer punto de prueba</span>
+        </div>
+      </div>
+      <div class="chip-box clip" data-start="8.350" data-duration="7.650" data-track-index="3">
+        <div class="chip" id="chip1" style="top:122px">
+          <span class="chip-n">2</span><span class="chip-t">Segundo punto de prueba</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="head">
+    <div id="kicker"><span id="kicker-in">PRUEBA TÉCNICA</span></div>
+    <h1 id="t1">Prueba de composición</h1>
+    <div id="rule"><i></i></div>
+  </div>
+  <div id="caps">
+  </div>
+  <div id="hud">
+    <div id="bar"><i id="bar-fill"></i></div>
+    <div id="foot"><span id="handle">@canal</span><span id="cta">GUARDÁ ESTO</span></div>
+  </div>
+  <audio id="sfx0" src="assets/sfx/whoosh-short.mp3" data-start="7.950" data-duration="2.000" data-track-index="9" data-volume="0.45"></audio>
+  <audio id="sfx1" src="assets/sfx/pop.mp3" data-start="0.400" data-duration="2.000" data-track-index="9" data-volume="0.45"></audio>
+  <audio id="sfx2" src="assets/sfx/pop.mp3" data-start="8.400" data-duration="2.000" data-track-index="9" data-volume="0.45"></audio>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
+const DUR = 16.000;
+
+/* ---- intro del titulo ---- */
+tl.fromTo("#kicker-in", { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 0.18);
+tl.fromTo("#t1", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.62, ease: "power3.out" }, 0.30);
+tl.fromTo("#rule i", { scaleX: 0 }, { scaleX: 1, duration: 0.70, ease: "power3.inOut" }, 0.62);
+tl.fromTo("#band-clip", { scale: 1.06, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.75, ease: "power3.out" }, 0.10);
+tl.fromTo("#caps", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 0.55);
+tl.fromTo("#foot", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.8);
+/* ---- barra de progreso ---- */
+tl.fromTo("#bar-fill", { scaleX: 0 }, { scaleX: 1, duration: DUR, ease: "none" }, 0);
+
+/* ---- push-in sutil por segmento ---- */
+tl.fromTo("#v0", { scale: 1.0 }, { scale: 1.055, duration: 8.000, ease: "none" }, 0.000);
+tl.fromTo("#v1", { scale: 1.0 }, { scale: 1.055, duration: 8.000, ease: "none" }, 8.000);
+
+/* ---- chips numerados ---- */
+tl.fromTo("#chip0", { x: 46, opacity: 0 }, { x: 0, opacity: 1, duration: 0.42, ease: "back.out(1.7)" }, 0.450);
+tl.fromTo("#chip1", { x: 46, opacity: 0 }, { x: 0, opacity: 1, duration: 0.42, ease: "back.out(1.7)" }, 8.450);
+
+/* ---- captions karaoke ---- */
+$$(".cap").forEach((cap) => {
+  const ws = Array.from(cap.querySelectorAll(".w"));
+  ws.forEach((w, i) => {
+    const at = parseFloat(w.dataset.s);
+    tl.fromTo(w, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.16, ease: "power2.out" }, at);
+    tl.set(ws, { className: "w" }, at);
+    tl.set(w, { className: "w act" }, at);
+  });
+});
+
+/* ---- transiciones entre bloques ---- */
+const flash = document.createElement("div");
+flash.id = "flash";
+document.getElementById("band").appendChild(flash);
+tl.fromTo("#flash", { opacity: 0.85 }, { opacity: 0, duration: 0.22, ease: "power2.out" }, 7.990);
+
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

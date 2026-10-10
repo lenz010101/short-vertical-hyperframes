@@ -1,0 +1,33 @@
+# --- material de trabajo fuera del repo ---
+.agents/
+.claude/
+agent/
+whisper/
+skills-lock.json
+*.log
+*.ps1
+ref_intro.jpg
+sheet.py
+clean_transcript.py
+fix_transcript.py
+make_music.py
+transcribe_chunks.py
+transcribe_fw.py
+transcribe_windows.py
+
+# --- artefactos del proyecto ---
+video-1/node_modules/
+video-1/renders/
+video-1/snapshots/
+video-1/asr_work/
+video-1/asr_win/
+video-1/doctor.json
+video-1/*.log
+video-1/probe*.json
+video-1/assets/probe*
+video-1/assets/transcript.json
+video-1/assets/full_transcript.json
+video-1/assets/windows_*.json
+video-1/assets/seg_*.mp4
+video-1/assets/bgm/track.wav
+__pycache__/
