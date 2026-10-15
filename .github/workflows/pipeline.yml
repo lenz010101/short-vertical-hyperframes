@@ -82,7 +82,8 @@ jobs:
           HF_SRC: video-1/assets/output_base.mp4
         run: |
           python tools/make_music_np.py
-          python tools/build_comp.py
+          python tools/gen_pro.py
+          python tools/prep_clip.py
 
       - name: Lint
         if: ${{ github.event.inputs.mode == 'build' }}
