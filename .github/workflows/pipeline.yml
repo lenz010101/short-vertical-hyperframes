@@ -115,8 +115,17 @@ jobs:
         run: |
           mkdir -p snapshots
           npx --yes hyperframes@0.8.145 snapshot --at 1.5,6,12,19,22.5,27,33,39.5,41.5,48.5
-          cp -r .hyperframes/artifacts/snapshots/*/ snapshots/ 2>/dev/null || cp -r .hyperframes/artifacts/snapshots/. snapshots/
+          cp -r snapshots/hf-snapshots/. snapshots/ 2>/dev/null || true
           find snapshots -type f | head -20
+
+      - name: Frames del MP4 final (verificacion real)
+        if: ${{ github.event.inputs.mode == 'build' }}
+        run: |
+          mkdir -p video-1/verify
+          for t in 3 12 25 40 49; do
+            ffmpeg -hide_banner -loglevel error -ss $t -i video-1/renders/video-final.mp4 -frames:v 1 -q:v 3 video-1/verify/f$t.jpg -y
+          done
+          ls -la video-1/verify
 
       - name: Subir video
         if: ${{ github.event.inputs.mode == 'build' }}
@@ -143,6 +152,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: snapshots
-          path: video-1/snapshots/**
+          path: |
+            video-1/snapshots/**
+            video-1/verify/**
           if-no-files-found: ignore
           retention-days: 14
