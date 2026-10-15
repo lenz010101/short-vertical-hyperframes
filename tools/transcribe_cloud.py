@@ -14,7 +14,7 @@ import sys
 
 from faster_whisper import WhisperModel
 
-SRC = os.environ.get("ASR_SRC", "video-1/assets/source_audio.m4a")
+SRC = os.environ.get("ASR_SRC", "video-1/assets/output_base.mp4")
 MODEL = os.environ.get("ASR_MODEL", "small")
 LANG = os.environ.get("ASR_LANG", "es")
 OUT_JSON = os.environ.get("ASR_OUT", "video-1/assets/transcript_full.json")
