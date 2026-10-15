@@ -1,0 +1,758 @@
+[
+ {
+  "id": "w0",
+  "text": "¿Quieres",
+  "start": 0.0,
+  "end": 0.32
+ },
+ {
+  "id": "w1",
+  "text": "comenzar",
+  "start": 0.32,
+  "end": 0.78
+ },
+ {
+  "id": "w2",
+  "text": "tu",
+  "start": 0.78,
+  "end": 0.92
+ },
+ {
+  "id": "w3",
+  "text": "propio",
+  "start": 0.92,
+  "end": 1.18
+ },
+ {
+  "id": "w4",
+  "text": "negocio",
+  "start": 1.18,
+  "end": 1.68
+ },
+ {
+  "id": "w5",
+  "text": "gastronómico",
+  "start": 1.68,
+  "end": 2.34
+ },
+ {
+  "id": "w6",
+  "text": "con",
+  "start": 2.34,
+  "end": 2.54
+ },
+ {
+  "id": "w7",
+  "text": "la",
+  "start": 2.54,
+  "end": 2.64
+ },
+ {
+  "id": "w8",
+  "text": "mejor",
+  "start": 2.64,
+  "end": 2.9
+ },
+ {
+  "id": "w9",
+  "text": "calidad?",
+  "start": 2.9,
+  "end": 3.32
+ },
+ {
+  "id": "w10",
+  "text": "Te",
+  "start": 3.86,
+  "end": 3.98
+ },
+ {
+  "id": "w11",
+  "text": "presentamos",
+  "start": 3.98,
+  "end": 4.48
+ },
+ {
+  "id": "w12",
+  "text": "este",
+  "start": 4.48,
+  "end": 4.74
+ },
+ {
+  "id": "w13",
+  "text": "carrito",
+  "start": 4.74,
+  "end": 5.08
+ },
+ {
+  "id": "w14",
+  "text": "profesional",
+  "start": 5.08,
+  "end": 5.62
+ },
+ {
+  "id": "w15",
+  "text": "para",
+  "start": 5.62,
+  "end": 5.96
+ },
+ {
+  "id": "w16",
+  "text": "hot",
+  "start": 5.96,
+  "end": 6.22
+ },
+ {
+  "id": "w17",
+  "text": "dogs",
+  "start": 6.22,
+  "end": 6.54
+ },
+ {
+  "id": "w18",
+  "text": "y",
+  "start": 6.54,
+  "end": 6.74
+ },
+ {
+  "id": "w19",
+  "text": "hamburguesas,",
+  "start": 6.74,
+  "end": 7.44
+ },
+ {
+  "id": "w20",
+  "text": "fabricado",
+  "start": 7.64,
+  "end": 8.14
+ },
+ {
+  "id": "w21",
+  "text": "con",
+  "start": 8.14,
+  "end": 8.34
+ },
+ {
+  "id": "w22",
+  "text": "acabados",
+  "start": 8.34,
+  "end": 8.8
+ },
+ {
+  "id": "w23",
+  "text": "de",
+  "start": 8.8,
+  "end": 9.0
+ },
+ {
+  "id": "w24",
+  "text": "alto",
+  "start": 9.0,
+  "end": 9.2
+ },
+ {
+  "id": "w25",
+  "text": "nivel,",
+  "start": 9.2,
+  "end": 9.5
+ },
+ {
+  "id": "w26",
+  "text": "con",
+  "start": 9.86,
+  "end": 9.98
+ },
+ {
+  "id": "w27",
+  "text": "unas",
+  "start": 9.98,
+  "end": 10.18
+ },
+ {
+  "id": "w28",
+  "text": "medidas",
+  "start": 10.18,
+  "end": 10.52
+ },
+ {
+  "id": "w29",
+  "text": "ideales",
+  "start": 10.52,
+  "end": 11.0
+ },
+ {
+  "id": "w30",
+  "text": "de",
+  "start": 11.0,
+  "end": 11.22
+ },
+ {
+  "id": "w31",
+  "text": "1",
+  "start": 11.22,
+  "end": 11.5
+ },
+ {
+  "id": "w32",
+  "text": ".30",
+  "start": 11.5,
+  "end": 11.84
+ },
+ {
+  "id": "w33",
+  "text": "de",
+  "start": 11.84,
+  "end": 12.06
+ },
+ {
+  "id": "w34",
+  "text": "largo,",
+  "start": 12.06,
+  "end": 12.34
+ },
+ {
+  "id": "w35",
+  "text": "70",
+  "start": 12.8,
+  "end": 13.28
+ },
+ {
+  "id": "w36",
+  "text": "de",
+  "start": 13.28,
+  "end": 13.56
+ },
+ {
+  "id": "w37",
+  "text": "ancho",
+  "start": 13.56,
+  "end": 13.9
+ },
+ {
+  "id": "w38",
+  "text": "y",
+  "start": 13.9,
+  "end": 14.18
+ },
+ {
+  "id": "w39",
+  "text": "95",
+  "start": 14.18,
+  "end": 14.58
+ },
+ {
+  "id": "w40",
+  "text": "de",
+  "start": 14.58,
+  "end": 15.08
+ },
+ {
+  "id": "w41",
+  "text": "alto,",
+  "start": 15.08,
+  "end": 15.34
+ },
+ {
+  "id": "w42",
+  "text": "está",
+  "start": 15.7,
+  "end": 15.98
+ },
+ {
+  "id": "w43",
+  "text": "equipado",
+  "start": 15.98,
+  "end": 16.38
+ },
+ {
+  "id": "w44",
+  "text": "para",
+  "start": 16.38,
+  "end": 16.6
+ },
+ {
+  "id": "w45",
+  "text": "trabajar",
+  "start": 16.6,
+  "end": 17.02
+ },
+ {
+  "id": "w46",
+  "text": "a",
+  "start": 17.02,
+  "end": 17.3
+ },
+ {
+  "id": "w47",
+  "text": "pleno,",
+  "start": 17.3,
+  "end": 17.58
+ },
+ {
+  "id": "w48",
+  "text": "una",
+  "start": 17.84,
+  "end": 18.04
+ },
+ {
+  "id": "w49",
+  "text": "potente",
+  "start": 18.04,
+  "end": 18.38
+ },
+ {
+  "id": "w50",
+  "text": "plancha",
+  "start": 18.38,
+  "end": 18.88
+ },
+ {
+  "id": "w51",
+  "text": "de",
+  "start": 18.88,
+  "end": 19.02
+ },
+ {
+  "id": "w52",
+  "text": "35",
+  "start": 19.02,
+  "end": 19.54
+ },
+ {
+  "id": "w53",
+  "text": "por",
+  "start": 19.54,
+  "end": 19.76
+ },
+ {
+  "id": "w54",
+  "text": "60",
+  "start": 19.76,
+  "end": 20.06
+ },
+ {
+  "id": "w55",
+  "text": "centímetros,",
+  "start": 20.06,
+  "end": 20.7
+ },
+ {
+  "id": "w56",
+  "text": "freidora",
+  "start": 21.26,
+  "end": 21.68
+ },
+ {
+  "id": "w57",
+  "text": "de",
+  "start": 21.68,
+  "end": 21.88
+ },
+ {
+  "id": "w58",
+  "text": "12",
+  "start": 21.88,
+  "end": 22.1
+ },
+ {
+  "id": "w59",
+  "text": "litros",
+  "start": 22.1,
+  "end": 22.52
+ },
+ {
+  "id": "w60",
+  "text": "con",
+  "start": 22.52,
+  "end": 22.76
+ },
+ {
+  "id": "w61",
+  "text": "su",
+  "start": 22.76,
+  "end": 22.92
+ },
+ {
+  "id": "w62",
+  "text": "inserto",
+  "start": 22.92,
+  "end": 23.28
+ },
+ {
+  "id": "w63",
+  "text": "reforzado,",
+  "start": 23.28,
+  "end": 23.82
+ },
+ {
+  "id": "w64",
+  "text": "panera",
+  "start": 24.32,
+  "end": 24.74
+ },
+ {
+  "id": "w65",
+  "text": "a",
+  "start": 24.74,
+  "end": 24.92
+ },
+ {
+  "id": "w66",
+  "text": "baño",
+  "start": 24.92,
+  "end": 25.14
+ },
+ {
+  "id": "w67",
+  "text": "María",
+  "start": 25.14,
+  "end": 25.46
+ },
+ {
+  "id": "w68",
+  "text": "para",
+  "start": 25.46,
+  "end": 25.86
+ },
+ {
+  "id": "w69",
+  "text": "mantener",
+  "start": 25.86,
+  "end": 26.2
+ },
+ {
+  "id": "w70",
+  "text": "todo",
+  "start": 26.2,
+  "end": 26.52
+ },
+ {
+  "id": "w71",
+  "text": "caliente",
+  "start": 26.52,
+  "end": 27.06
+ },
+ {
+  "id": "w72",
+  "text": "y",
+  "start": 27.06,
+  "end": 27.62
+ },
+ {
+  "id": "w73",
+  "text": "3",
+  "start": 27.62,
+  "end": 27.8
+ },
+ {
+  "id": "w74",
+  "text": "insertos",
+  "start": 27.8,
+  "end": 28.32
+ },
+ {
+  "id": "w75",
+  "text": "adicionales",
+  "start": 28.32,
+  "end": 29.02
+ },
+ {
+  "id": "w76",
+  "text": "con",
+  "start": 29.02,
+  "end": 29.14
+ },
+ {
+  "id": "w77",
+  "text": "tapa",
+  "start": 29.14,
+  "end": 29.42
+ },
+ {
+  "id": "w78",
+  "text": "para",
+  "start": 29.42,
+  "end": 29.7
+ },
+ {
+  "id": "w79",
+  "text": "tus",
+  "start": 29.7,
+  "end": 29.88
+ },
+ {
+  "id": "w80",
+  "text": "aderezos",
+  "start": 29.88,
+  "end": 30.3
+ },
+ {
+  "id": "w81",
+  "text": "y",
+  "start": 30.3,
+  "end": 30.48
+ },
+ {
+  "id": "w82",
+  "text": "cópines.",
+  "start": 30.48,
+  "end": 30.84
+ },
+ {
+  "id": "w83",
+  "text": "Además,",
+  "start": 31.14,
+  "end": 31.4
+ },
+ {
+  "id": "w84",
+  "text": "cuenta",
+  "start": 31.46,
+  "end": 31.78
+ },
+ {
+  "id": "w85",
+  "text": "con",
+  "start": 31.78,
+  "end": 32.0
+ },
+ {
+  "id": "w86",
+  "text": "techo",
+  "start": 32.0,
+  "end": 32.46
+ },
+ {
+  "id": "w87",
+  "text": "con",
+  "start": 32.46,
+  "end": 32.7
+ },
+ {
+  "id": "w88",
+  "text": "lona",
+  "start": 32.7,
+  "end": 33.12
+ },
+ {
+  "id": "w89",
+  "text": "superresistente",
+  "start": 33.12,
+  "end": 34.28
+ },
+ {
+  "id": "w90",
+  "text": "para",
+  "start": 34.28,
+  "end": 34.56
+ },
+ {
+  "id": "w91",
+  "text": "trabajar",
+  "start": 34.56,
+  "end": 34.96
+ },
+ {
+  "id": "w92",
+  "text": "al",
+  "start": 34.96,
+  "end": 35.2
+ },
+ {
+  "id": "w93",
+  "text": "aire",
+  "start": 35.2,
+  "end": 35.36
+ },
+ {
+  "id": "w94",
+  "text": "libre",
+  "start": 35.36,
+  "end": 35.66
+ },
+ {
+  "id": "w95",
+  "text": "sin",
+  "start": 35.66,
+  "end": 36.12
+ },
+ {
+  "id": "w96",
+  "text": "preocupaciones.",
+  "start": 36.12,
+  "end": 36.86
+ },
+ {
+  "id": "w97",
+  "text": "Llévatelo",
+  "start": 37.6,
+  "end": 38.24
+ },
+ {
+  "id": "w98",
+  "text": "completo",
+  "start": 38.24,
+  "end": 38.8
+ },
+ {
+  "id": "w99",
+  "text": "por",
+  "start": 38.8,
+  "end": 39.22
+ },
+ {
+  "id": "w100",
+  "text": "sólo",
+  "start": 39.22,
+  "end": 39.48
+ },
+ {
+  "id": "w101",
+  "text": "13",
+  "start": 39.48,
+  "end": 40.0
+ },
+ {
+  "id": "w102",
+  "text": ".500",
+  "start": 40.0,
+  "end": 40.78
+ },
+ {
+  "id": "w103",
+  "text": "pesos",
+  "start": 40.78,
+  "end": 41.14
+ },
+ {
+  "id": "w104",
+  "text": "mexicanos.",
+  "start": 41.14,
+  "end": 42.28
+ },
+ {
+  "id": "w105",
+  "text": "Un",
+  "start": 42.44,
+  "end": 42.74
+ },
+ {
+  "id": "w106",
+  "text": "equipo",
+  "start": 42.74,
+  "end": 43.02
+ },
+ {
+  "id": "w107",
+  "text": "profesional,",
+  "start": 43.02,
+  "end": 43.84
+ },
+ {
+  "id": "w108",
+  "text": "funcional",
+  "start": 44.16,
+  "end": 44.74
+ },
+ {
+  "id": "w109",
+  "text": "y",
+  "start": 44.74,
+  "end": 45.02
+ },
+ {
+  "id": "w110",
+  "text": "listo",
+  "start": 45.02,
+  "end": 45.44
+ },
+ {
+  "id": "w111",
+  "text": "para",
+  "start": 45.44,
+  "end": 45.62
+ },
+ {
+  "id": "w112",
+  "text": "facturar.",
+  "start": 45.62,
+  "end": 46.08
+ },
+ {
+  "id": "w113",
+  "text": "Haz",
+  "start": 46.44,
+  "end": 46.68
+ },
+ {
+  "id": "w114",
+  "text": "clic",
+  "start": 46.68,
+  "end": 46.86
+ },
+ {
+  "id": "w115",
+  "text": "abajo",
+  "start": 46.86,
+  "end": 47.2
+ },
+ {
+  "id": "w116",
+  "text": "y",
+  "start": 47.2,
+  "end": 47.52
+ },
+ {
+  "id": "w117",
+  "text": "mándanos",
+  "start": 47.52,
+  "end": 47.98
+ },
+ {
+  "id": "w118",
+  "text": "un",
+  "start": 47.98,
+  "end": 48.24
+ },
+ {
+  "id": "w119",
+  "text": "whatsapp",
+  "start": 48.24,
+  "end": 48.82
+ },
+ {
+  "id": "w120",
+  "text": "para",
+  "start": 48.82,
+  "end": 49.14
+ },
+ {
+  "id": "w121",
+  "text": "cotizar",
+  "start": 49.14,
+  "end": 49.62
+ },
+ {
+  "id": "w122",
+  "text": "el",
+  "start": 49.62,
+  "end": 49.78
+ },
+ {
+  "id": "w123",
+  "text": "tuyo",
+  "start": 49.78,
+  "end": 50.18
+ },
+ {
+  "id": "w124",
+  "text": "hoy",
+  "start": 50.18,
+  "end": 50.38
+ },
+ {
+  "id": "w125",
+  "text": "mismo.",
+  "start": 50.38,
+  "end": 50.72
+ }
+]

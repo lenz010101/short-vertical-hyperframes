@@ -1,9 +1,14 @@
 {
-  "duration": 55.4,
-  "kicker": "EDICIÓN PRO",
-  "title": "MIRÁ HASTA EL FINAL",
-  "handle": "VIDEO REMIX",
+  "duration": 52.4,
+  "kicker": "NEGOCIO GASTRONÓMICO",
+  "title": "Tu carrito PRO está aquí",
+  "handle": "VENTA · MX",
   "segments": [
-    { "in": 0.0, "out": 55.2, "chip": "Mejorado con HyperFrames" }
+    { "in": 0.0,  "out": 17.6, "chip": "Medidas ideales 130 × 70 × 95" },
+    { "in": 17.8, "out": 24.0, "chip": "Plancha 35 × 60 cm" },
+    { "in": 24.3, "out": 31.0, "chip": "Baño maría + 3 insertos" },
+    { "in": 31.1, "out": 37.4, "chip": "Techo con lona reforzada" },
+    { "in": 37.6, "out": 46.2, "chip": "Solo $13.500 MXN" },
+    { "in": 46.4, "out": 51.5, "chip": null }
   ]
 }
