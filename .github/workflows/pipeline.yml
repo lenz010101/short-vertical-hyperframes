@@ -35,11 +35,24 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
 
+      # FFmpeg estático cacheado (evita apt-get, ~1-2 min menos)
+      - name: Cache FFmpeg estático
+        id: ffmpeg-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/ffmpeg-static
+          key: ffmpeg-static-amd64-v1
       - name: FFmpeg
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg
+          if [ ! -f ~/ffmpeg-static/ffmpeg ]; then
+            mkdir -p ~/ffmpeg-static
+            curl -fsSL -o /tmp/ffmpeg.tar.xz https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
+            tar -xf /tmp/ffmpeg.tar.xz -C /tmp
+            cp /tmp/ffmpeg-*-amd64-static/ffmpeg /tmp/ffmpeg-*-amd64-static/ffprobe ~/ffmpeg-static/
+          fi
+          echo "$HOME/ffmpeg-static" >> "$GITHUB_PATH"
           ffmpeg -version | head -n 1
 
       - name: Dependencias Python
