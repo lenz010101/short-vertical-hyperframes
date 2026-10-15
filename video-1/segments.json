@@ -1,13 +1,9 @@
 {
-  "duration": 60.1,
-  "kicker": "GUÍA RÁPIDA",
-  "title": "4 consejos para arrancar tu e-commerce",
-  "handle": "ECOM · TIPS",
+  "duration": 55.4,
+  "kicker": "EDICIÓN PRO",
+  "title": "MIRÁ HASTA EL FINAL",
+  "handle": "VIDEO REMIX",
   "segments": [
-    { "in": 9.8,   "out": 20.0,  "chip": null },
-    { "in": 116.3, "out": 128.6, "chip": "No te rindas al primer testeo" },
-    { "in": 262.7, "out": 275.6, "chip": "Recordá por qué empezaste" },
-    { "in": 391.3, "out": 402.4, "chip": "Accioná rápido, sin procrastinar" },
-    { "in": 452.0, "out": 465.6, "chip": "8 horas, como a un trabajo" }
+    { "in": 0.0, "out": 55.2, "chip": "Mejorado con HyperFrames" }
   ]
 }

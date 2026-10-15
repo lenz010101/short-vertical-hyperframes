@@ -38,9 +38,30 @@ FPS = 30
 ACCENT = "#FFD84D"
 BG = "#07080B"
 
-# Recorte 4:3 de la fuente 1280x720, con el sujeto a la izquierda para dejar
-# libre el lado del texto.
-CROP = "crop=960:720:320:0"
+# Recorte/escala de la fuente al lienzo 1080x810 (4:3), detectado en runtime
+# via ffprobe: portrait -> recorte central; landscape -> recorte 4:3 centrado.
+def probe_crop():
+    r = sh(["ffprobe", "-v", "error", "-select_streams", "v:0",
+            "-show_entries", "stream=width,height", "-of", "csv=p=0", SRC])
+    try:
+        w, h = [int(x) for x in r.stdout.strip().split(",")[:2]]
+    except Exception:
+        w, h = 1280, 720
+    if h > w:  # vertical: banda 4:3 centrada
+        cw = int(h * 4 / 3) if int(h * 4 / 3) <= w else w
+        crop = "crop=%d:%d:(in_w-%d)/2:(in_h-%d)/2" % (cw, min(h, int(w*810/1080)), cw, min(h, int(w*810/1080)))
+        ch = int(w * 810 / 1080)
+        if ch > h:
+            ch = h
+            cw = int(h * 4 / 3)
+        crop = "crop=%d:%d:(in_w-%d)/2:(in_h-%d)/2" % (cw, ch, cw, ch)
+    else:      # horizontal: 4:3 centrado
+        cw = int(h * 4 / 3)
+        if cw > w:
+            cw = w
+        crop = "crop=%d:%d:(in_w-%d)/2:0" % (cw, h, cw)
+    print("fuente %dx%d -> filtro %s" % (w, h, crop))
+    return crop
 
 
 def sh(cmd, **kw):
@@ -53,7 +74,7 @@ def load_json(path):
         return json.load(fh)
 
 
-def extract_segments(segs):
+def extract_segments(segs, crop):
     made = []
     for i, s in enumerate(segs):
         out = os.path.join(ASSETS, "seg_%02d.mp4" % i)
@@ -65,7 +86,7 @@ def extract_segments(segs):
         cmd = [
             "ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
             "-ss", "%.3f" % s["in"], "-t", "%.3f" % dur, "-i", SRC,
-            "-vf", "%s,scale=%d:%d:flags=lanczos,setsar=1" % (CROP, BAND_W, BAND_H),
+            "-vf", "%s,scale=%d:%d:flags=lanczos,setsar=1" % (crop, BAND_W, BAND_H),
             "-r", str(FPS),
             "-c:v", "libx264", "-preset", "slow", "-crf", "17",
             "-pix_fmt", "yuv420p",
@@ -315,11 +336,11 @@ def main():
     duration = round(max(cfg_dur, total + 0.45), 3)
     print("duracion total: %.2fs (root %.2fs) en %d segmentos"
           % (total, duration, len(segs)))
-    if abs(total - 60.0) > 1.2:
-        print("  AVISO: la duracion se aleja de 60s")
+
+    crop = probe_crop()
 
     print("extrayendo segmentos...")
-    extract_segments(segs)
+    extract_segments(segs, crop)
     copy_audio()
 
     caps = []
