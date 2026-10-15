@@ -103,14 +103,20 @@ jobs:
             --output renders/video-final.mp4
           ls -la renders
 
+      - name: Cache Puppeteer Chrome
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/puppeteer
+          key: puppeteer-chrome-v1
+
       - name: Snapshots (verificacion visual)
         if: ${{ github.event.inputs.mode == 'build' }}
         working-directory: video-1
         run: |
           mkdir -p snapshots
-          npx --yes hyperframes@0.8.145 snapshot --at 1.5,6,12,19,22.5,27,33,39.5,41.5,48.5 \
-            --out snapshots || ls -la .hyperframes/artifacts/snapshots/ && cp -r .hyperframes/artifacts/snapshots/* snapshots/ || true
-          find snapshots -name "*.jp*g" | head -20
+          npx --yes hyperframes@0.8.145 snapshot --at 1.5,6,12,19,22.5,27,33,39.5,41.5,48.5
+          cp -r .hyperframes/artifacts/snapshots/*/ snapshots/ 2>/dev/null || cp -r .hyperframes/artifacts/snapshots/. snapshots/
+          find snapshots -type f | head -20
 
       - name: Subir video
         if: ${{ github.event.inputs.mode == 'build' }}
